@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.">
+	<meta property="og:title" content="무비피플 - 한국 박스오피스 순위 TOP10">
+	<meta property="og:description" content="영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.">
+	<meta property="og:image" content="https://www.boxoffice.kro.kr/img/logo-800x800-og.png">
+	<meta property="og:url" content="https://www.boxoffice.kro.kr">
+	<meta property="og:type" content="website">
+	<link rel="canonical" href="https://www.boxoffice.kro.kr/index.html">
+
+	<title>무비피플 - 영화 박스오피스 TOP10</title>
+	<link rel="shortcut icon" href="https://www.boxoffice.kro.kr/favicon.ico" type="image/x-icon">
+
+	<!--[if lt IE 9]>
+	<script src="js/ie9.min.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/movie.js"></script>
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	
+	<!-- Google 구조화된 데이터 마크업 도우미에 의해 생성된 JSON-LD 마크업입니다. -->
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "WebSite",
+  "name" : "무비피플",
+  "url" : "https://www.boxoffice.kro.kr",
+	"description" : "영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "LABEL788"
+  }
+}
+</script>
+	
+	<!-- PWA화, 여기부터 -->
+	<!-- [iOS 사파리에 대응] -->
+	<!-- 주소창 등의 웹 브라우저 UI를 표시하지 않기 -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!-- 상태 바의 스타일을 지정 -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- 홈 화면에서 표시되는 앱 이름을 지정 -->
+	<meta name="application-name" content="무비피플">
+	<meta name="apple-mobile-web-app-title" content="무비피플">
+	<!-- 홈 화면에서 표시되는 앱 아이콘을 지정 -->
+	<link rel="apple-touch-icon" href="/app_img/touch-icon-iphone.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/app_img/touch-icon-iphone-120x120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/app_img/touch-icon-ipad.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/app_img/touch-icon-iphone-retina.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="/app_img/touch-icon-ipad-retina.png">
+	<link rel="apple-touch-startup-image" href="/app_img/touch-launch.png">
+
+	<!-- [Android와 PC, 크롬·엣지에 대응] -->
+	<!-- 웹 앱 매니페스트를 읽어 들이기 -->
+	<link rel="manifest" href="manifest.webmanifest">
+	<!-- 서비스 워커를 등록 -->
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('js/iconsw.js')
+				.then((reg) => {
+					console.log('서비스 워커가 등록됨.', reg);
+				});
+		}
+	</script>
+	<!-- PWA화, 여기까지 -->
+</head>
+
+<body>
+	<div class="all-wrap">
+		<!--헤더 시작-->
+		<header>
+			<div class="h-con">
+				<h1 class="blind" id="header-logo"><img src="img/logo_300.png" alt="무비피플"></h1>
+				<ul>
+					<li id="menu-open-btn"><i class="xi-bars"></i></li>
+					<li>
+						<div id="search-bar-box">
+							<input id="search-bar-input" type="search" placeholder="영화제목으로 검색">
+							<button id="search-bar-btn"><i class="xi-search"></i></button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<!--헤더 끝-->
+		<!--네비게이션바 시작-->
+		<nav>
+			<div id="menu-close-btn"><i class="xi-close-thin"></i></div>
+			<div class="logo-title">
+				<img src="img/logo_300.png" alt="무비피플로고">
+			</div>
+			<div class="nav-menu">
+				<div id="boxoffice1"><a href="#">
+						<h3><i class="xi-trophy"></i><span> 실시간 박스오피스 TOP10</span></h3>
+					</a></div>
+				<div id="boxoffice2"><a href="#">
+						<h3><i class="xi-thumbs-up"></i><span> 일별 박스오피스 TOP10</span></h3>
+					</a></div>
+				<div id="boxoffice3"><a href="#">
+						<h3><i class="xi-crown"></i><span> 주간 박스오피스 TOP10</span></h3>
+					</a></div>
+				<div id="accordion">
+					<h3 style="cursor: pointer;"><i class="xi-coupon"></i> 영화 예매 사이트</h3>
+					<div>
+						<p><a href="https://movie.daum.net/main/" target="_blank"><i class="xi-movie-o"></i> 다음 영화 예매</a></p>
+						<p><a href="https://movie.naver.com/" target="_blank"><i class="xi-movie-o"></i> 네이버 영화 예매</a></p>
+						<p><a href="http://www.yes24.com/" target="_blank"><i class="xi-movie-o"></i> 예스24 홈페이지</a></p>
+						<p><a href="http://ticket.interpark.com/" target="_blank"><i class="xi-movie-o"></i> 인터파크티켓 홈페이지</a></p>
+						<p><a href="https://www.cgv.co.kr/" target="_blank"><i class="xi-movie-o"></i> CGV 홈페이지</a></p>
+						<p><a href="https://www.megabox.co.kr/" target="_blank"><i class="xi-movie-o"></i> 메가박스 홈페이지</a></p>
+						<p><a href="https://www.lottecinema.co.kr/" target="_blank"><i class="xi-movie-o"></i> 롯데시네마 홈페이지</a></p>
+					</div>
+					<h3 style="cursor: pointer;"><i class="xi-youtube-play"></i> 영화 드라마 리뷰</h3>
+					<div>
+						<p><a href="https://www.youtube.com/user/rladndgussla" target="_blank"><i class="xi-videocam-o"></i> 고몽</a></p>
+						<p><a href="https://www.youtube.com/channel/UCaHGOzOyeYzLQeKsVkfLEGA" target="_blank"><i class="xi-videocam-o"></i> 지무비</a></p>
+						<p><a href="https://www.youtube.com/user/13neye" target="_blank"><i class="xi-videocam-o"></i> 김시선</a></p>
+						<p><a href="https://www.youtube.com/channel/UCpCiIDf9UrfRqte55FHWlYQ" target="_blank"><i class="xi-videocam-o"></i> 드림텔러</a></p>
+						<p><a href="https://www.youtube.com/channel/UCxlv4aOnrRTXMRSL8bVJqEw" target="_blank"><i class="xi-videocam-o"></i> 삐맨</a></p>
+						<p><a href="https://www.youtube.com/channel/UCb_GEWOGkCTXawWZKDtALwg" target="_blank"><i class="xi-videocam-o"></i> 9bul</a></p>
+						<p><a href="https://www.youtube.com/channel/UCLIgl1OnHngMxYkkNJ-uO5w" target="_blank"><i class="xi-videocam-o"></i> UTZI웃지</a></p>
+						<p><a href="https://www.youtube.com/user/TopOn90" target="_blank"><i class="xi-videocam-o"></i> 띵잘</a></p>
+						<p><a href="https://www.youtube.com/channel/UCpr2S3SBmyjvrx9Q4pLUZHw" target="_blank"><i class="xi-videocam-o"></i> 무비트립</a></p>
+						<p><a href="https://www.youtube.com/channel/UCeLjgXOEQzQ_IfG94rF1_vw" target="_blank"><i class="xi-videocam-o"></i> 김흥미</a></p>
+						<p><a href="https://www.youtube.com/channel/UCXvftM-43hGjGc1TA-8Y_IA" target="_blank"><i class="xi-videocam-o"></i> 동네비디오방</a></p>
+						<p><a href="https://www.youtube.com/channel/UCfsdRdf5YvHDb3bWxkF_0_g" target="_blank"><i class="xi-videocam-o"></i> 조조할인</a></p>
+						<p><a href="https://www.youtube.com/channel/UC4Jc7nRQS5yGF-gyFwutXMw" target="_blank"><i class="xi-videocam-o"></i> 콜라냥</a></p>
+						<p><a href="https://www.youtube.com/channel/UCNqd4xk6kJwbr_XwVwlroBA" target="_blank"><i class="xi-videocam-o"></i> 무비워크</a></p>
+						<p><a href="https://www.youtube.com/channel/UCctY2Roci8mahWgSSxHRyjg" target="_blank"><i class="xi-videocam-o"></i> 틀니탁탁TV(호러)</a></p>
+						<p><a href="https://www.youtube.com/user/jjw18011" target="_blank"><i class="xi-videocam-o"></i> 무비웨이브스</a></p>
+						<p><a href="https://www.youtube.com/channel/UCVmuykrw-LLyWwe45c0wusg" target="_blank"><i class="xi-videocam-o"></i> 정오비디오</a></p>
+					</div>
+				</div>
+				<a href="https://www.culture.go.kr/wday/index.do" target="_blank">
+					<div class="ct-day">문화가 있는 날 : <span>3월 31일 수요일</span></div>
+				</a>
+				<!--서브 배너-->
+				<div class="sub-banner">
+					<a href="https://coupa.ng/bVJG3u" target="_blank"><img src="img/banner-img1.png" alt="쿠팡로켓배송">
+					<p><i class="xi-info-o"></i></p>
+					</a>
+				</div>
+				<!--서브 배너 끝-->
+			</div>
+		</nav>
+		<!--네비게이션바 끝-->
+		<!--메인 시작-->
+		<main>
+			<!--m-con1 : 실시간 박스오피스-->
+			<div class="m-con1">
+				<div class="subtitle">
+					<h2><img src="img/logo_60.png" alt=""><span> 실시간 박스오피스 TOP10</span></h2>
+					<div class="date">
+						<h4 class="today-result">2021년 3월 15일 월요일</h4>
+					</div>
+					<div class="subtitle-blank"></div>
+				</div>
+				<div class="rank-list">
+					<!--랭크 부분 -->
+					<div class="rbox1-top"><i class="xi-spinner-1 xi-spin"></i> 검색중...</div>
+					<div class="rbox1-bottom"></div>
+					<div class="rbox">
+						<a class="rbox-a" href="javascript:void(0);" onclick=''>
+							<div class="rbox-rank">
+								<p class="rbox-rank-p">0</p>
+							</div>
+							<h3 class="rbox-title">영화제목</h3>
+							<p class="rbox-date"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
+							<p class="rbox-num"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
+							<div class="rbox-rank-bg"></div>
+							<h2 class="rbox-rank-gap">&bull;0</h2>
+							<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!--m-con1 : 실시간 박스오피스 종료-->
+
+			<!--m-con2 : 일별 박스오피스-->
+			<div class="m-con2">
+				<div class="subtitle">
+					<h2><img src="img/logo_60.png" alt=""><span> 일별 박스오피스 TOP10</span></h2>
+					<div class="sel-date">
+						<h4>선택한 날짜의 박스오피스<br><input type="date" class="datepicker" id="datepicker1" placeholder="날짜를 선택 하세요." onkeydown="return false"><input type="button" value="확인" id="sel-date-bt1"></h4>
+					</div>
+					<div class="subtitle-blank"></div>
+				</div>
+				<div class="rank-list">
+					<!--랭크 부분 -->
+					<div class="rbox2-top"></div>
+					<div class="rbox2-bottom"></div>
+					<div class="rbox">
+						<a class="rbox-a" href="javascript:void(0);" onclick=''>
+							<div class="rbox-rank">
+								<p class="rbox-rank-p">0</p>
+							</div>
+							<h3 class="rbox-title">영화제목</h3>
+							<p class="rbox-date"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
+							<p class="rbox-num"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
+							<div class="rbox-rank-bg"></div>
+							<h2 class="rbox-rank-gap">&bull;0</h2>
+							<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!--m-con2 : 일별 박스오피스 종료-->
+
+			<!--m-con3 : 주간 박스오피스-->
+			<div class="m-con3">
+				<div class="subtitle">
+					<h2><img src="img/logo_60.png" alt=""><span> 주간 박스오피스 TOP10</span></h2>
+					<div class="sel-date">
+						<h4>선택한 날짜가 속한 주차<br><input type="date" class="datepicker" id="datepicker2" placeholder="날짜를 선택 하세요." onkeydown="return false"><input type="button" value="확인" id="sel-date-bt2"></h4>
+					</div>
+					<div class="subtitle-blank"></div>
+				</div>
+				<div class="rank-list">
+					<!--랭크 부분 -->
+					<div class="rbox3-top"></div>
+					<div class="rbox3-bottom"></div>
+					<div class="rbox">
+						<a class="rbox-a" href="javascript:void(0);" onclick=''>
+							<div class="rbox-rank">
+								<p class="rbox-rank-p">0</p>
+							</div>
+							<h3 class="rbox-title">영화제목</h3>
+							<p class="rbox-date"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
+							<p class="rbox-num"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
+							<div class="rbox-rank-bg"></div>
+							<h2 class="rbox-rank-gap">&bull;0</h2>
+							<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>
+						</a>
+					</div>
+				</div>
+				<div class="cont3-desc">
+					<img src="img/img_slate.png" alt="날짜를선택하세요">
+				</div>
+			</div>
+			<!--m-con3 : 주간 박스오피스 종료-->
+
+			<!--m-con4 : 영화 검색-->
+			<div class="m-con4">
+				<div class="subtitle">
+					<h2><img src="img/logo_60.png" alt=""><span> 영화 검색 정보</span></h2>
+					<div class="subtitle-blank"></div>
+					<div>
+						<h4 class="s-text"><span>입력정보</span> 검색 결과</h4>
+					</div>
+					<div class="subtitle-blank"></div>
+				</div>
+				<div class="s-list">
+					<!--목록 부분 -->
+					<div class="s-top"><i class="xi-spinner-1 xi-spin"></i> 검색중...</div>
+					<div class="s-bottom"></div>
+					<div class="sbox">
+							<div class="sbox-bull">
+								<p class="sbox-bull-p">&rtrif;</p>
+								<img src="img/logo_60.png" alt="무비피플로고">
+							</div>
+							<h3 class="sbox-title">영화제목</h3>
+							<p class="sbox-date"><i class="xi-calendar-check"></i> <span class="sbox-date-span">국내 개봉일 </span>개봉</p>
+							<p class="sbox-pd"><i class="xi-theater"></i> <span class="sbox-pd-span">감독명</span> 감독</p>
+							<div class="sbox-list-bg"></div>
+							<p class="sbox-show-click">상세보기</p>
+							<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>
+							<div class="sbox-desc"></div>
+					</div>
+				</div>
+			</div>
+			<!--search-con : 영화 검색 종료-->
+
+			<!--movie-show : 영화 상세 정보-->
+			<div class="movie-show">
+				<div class="movie-show-box">
+					<div class="movie-show-close"><span><i class="xi-close"></i></span></div>
+					<div class="movie-show-desc"><i class="xi-spinner-1 xi-spin"></i> 검색중...</div>
+				</div>
+				<!--서브 배너-->
+				<div class="sub-banner sub-banner-show">
+					<a href="https://coupa.ng/bVJG3u" target="_blank"><img src="img/banner-img1.png" alt="쿠팡로켓배송">
+					<p><i class="xi-info-o"></i></p>
+					</a>
+				</div>
+				<!--서브 배너 끝-->
+			</div>
+			<!--movie-show : 영화 상세 정보 종료-->
+			
+			<!--영화 데이터 저장-->
+			<div style="display: none;" class="result-data">
+				<div class="result-data-1"></div>
+				<div class="result-data-2"></div>
+				<div class="result-data-3"></div>
+			</div>
+			<!--영화 데이터 저장 종료-->
+
+			<!--배너 시작-->
+			<div class="m-banner">
+				<div class="banner-1 banner-design">
+					<!--300size img-->
+					<a href="https://www.goodprice.kro.kr" target="_blank">
+						<img src="img/banner1-img2.png" alt="마트랑계산기 무료 사용">
+					</a>
+				</div>
+				<div class="banner-2 banner-design">
+					<!--300size img-->
+					<a href="https://smartstore.naver.com/gawimonster" target="_blank">
+						<img src="img/banner2-img1.png" alt="가위몬스터 쇼핑몰">
+					</a>
+				</div>
+				<div class="banner-3 banner-design">
+					<!--300size img-->
+					<a href="https://coupa.ng/bVIkON" target="_blank"><img src="img/banner3-img2.png" alt="쿠팡쇼핑">			
+					</a>
+				</div>
+				<div class="coupang-text">파트너스 활동을 통해 일정액의 수수료를 제공받을 수 있음</div>
+			</div>
+			<!--배너 종료-->
+			<!--맨위로 버튼-->
+			<div id="top-btn"><i class="xi-arrow-top"></i></div>
+			<!--맨위로 버튼 종료-->
+		</main>
+		<!--메인 종료-->
+		<!--푸터 시작-->
+		<footer>
+			<button id="btn-save"><i class="xi-plus-circle-o"></i> 무비피플 바로가기 만들기</button>
+			<address>
+				무비피플 - 한국 박스오피스 순위 TOP10
+				<br>
+				All rights reserved 2021 &copy;LABEL788<br>
+				<a href="mailto:label788.dev@gmail.com?Subject=무비피플%20문의메일%20">email to :
+					label788.dev@gmail.com</a><br>
+				www.boxoffice.kro.kr
+			</address>
+			<div class="btn-share">
+				<a href="#" onclick="javascript:window.open('http://share.naver.com/web/shareView.nhn?url='+encodeURIComponent(document.URL)+'&title='+encodeURIComponent(document.title), 'naversharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="네이버공유하기"><button id="gtm-share-naver" style="background: url(img/ico_naver.jpg) no-repeat; background-color: #efefef;">네이버
+						공유&nbsp;</button></a>
+				<span>&nbsp;</span>
+				<a id="kakao-link-btn" href="javascript:sendLink()">
+					<button id="gtm-share-katalk" style="background: url(img/ico_katalk.jpg) no-repeat; background-color: #efefef;">카카오톡
+						공유&nbsp;</button>
+				</a>
+				<script type="text/javascript">
+					Kakao.init('d2199115ee7ad4deae9e9ac0a1547389');
+					function sendLink() {
+						Kakao.Link.sendScrap({
+							requestUrl: 'https://www.boxoffice.kro.kr'
+						});
+					}
+				</script>
+			</div>
+		</footer>
+		<!--푸터 종료-->
+	</div>
+
+</body></html>
