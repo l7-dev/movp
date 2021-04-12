@@ -1,0 +1,8 @@
+
+/*미디어 쿼리*/
+@media screen and (max-width: 1599px) {
+	nav.on {width: 100%;}
+	
+}
+
+/*미디어 쿼리 종료*/
