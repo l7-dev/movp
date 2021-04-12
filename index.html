@@ -66,11 +66,11 @@
 
 	<!-- [Android와 PC, 크롬·엣지에 대응] -->
 	<!-- 웹 앱 매니페스트를 읽어 들이기 -->
-	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="manifest" href="manifest.json">
 	<!-- 서비스 워커를 등록 -->
 	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('/service-worker.js')
+			navigator.serviceWorker.register('/js/iconsw.js')
 				.then((reg) => {
 					console.log('서비스 워커가 등록됨.', reg);
 				});
