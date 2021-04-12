@@ -31,22 +31,22 @@
 	<link rel="stylesheet" href="css/font.css">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 	<link rel="stylesheet" href="css/common.css">
-	
+
 	<!-- Google 구조화된 데이터 마크업 도우미에 의해 생성된 JSON-LD 마크업입니다. -->
-<script type="application/ld+json">
-{
-  "@context" : "http://schema.org",
-  "@type" : "WebSite",
-  "name" : "무비피플",
-  "url" : "https://www.boxoffice.kro.kr",
-	"description" : "영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.",
-  "publisher" : {
-    "@type" : "Organization",
-    "name" : "LABEL788"
-  }
-}
-</script>
-	
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "WebSite",
+			"name": "무비피플",
+			"url": "https://www.boxoffice.kro.kr",
+			"description": "영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.",
+			"publisher": {
+				"@type": "Organization",
+				"name": "LABEL788"
+			}
+		}
+	</script>
+
 	<!-- PWA화, 여기부터 -->
 	<!-- [iOS 사파리에 대응] -->
 	<!-- 주소창 등의 웹 브라우저 UI를 표시하지 않기 -->
@@ -70,7 +70,7 @@
 	<!-- 서비스 워커를 등록 -->
 	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('/js/iconsw.js')
+			navigator.serviceWorker.register('iconsw.js')
 				.then((reg) => {
 					console.log('서비스 워커가 등록됨.', reg);
 				});
@@ -151,7 +151,7 @@
 				<!--서브 배너-->
 				<div class="sub-banner">
 					<a href="https://coupa.ng/bVJG3u" target="_blank"><img src="img/banner-img1.png" alt="쿠팡로켓배송">
-					<p><i class="xi-info-o"></i></p>
+						<p><i class="xi-info-o"></i></p>
 					</a>
 				</div>
 				<!--서브 배너 끝-->
@@ -268,17 +268,17 @@
 					<div class="s-top"><i class="xi-spinner-1 xi-spin"></i> 검색중...</div>
 					<div class="s-bottom"></div>
 					<div class="sbox">
-							<div class="sbox-bull">
-								<p class="sbox-bull-p">&rtrif;</p>
-								<img src="img/logo_60.png" alt="무비피플로고">
-							</div>
-							<h3 class="sbox-title">영화제목</h3>
-							<p class="sbox-date"><i class="xi-calendar-check"></i> <span class="sbox-date-span">국내 개봉일 </span>개봉</p>
-							<p class="sbox-pd"><i class="xi-theater"></i> <span class="sbox-pd-span">감독명</span> 감독</p>
-							<div class="sbox-list-bg"></div>
-							<p class="sbox-show-click">상세보기</p>
-							<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>
-							<div class="sbox-desc"></div>
+						<div class="sbox-bull">
+							<p class="sbox-bull-p">&rtrif;</p>
+							<img src="img/logo_60.png" alt="무비피플로고">
+						</div>
+						<h3 class="sbox-title">영화제목</h3>
+						<p class="sbox-date"><i class="xi-calendar-check"></i> <span class="sbox-date-span">국내 개봉일 </span>개봉</p>
+						<p class="sbox-pd"><i class="xi-theater"></i> <span class="sbox-pd-span">감독명</span> 감독</p>
+						<div class="sbox-list-bg"></div>
+						<p class="sbox-show-click">상세보기</p>
+						<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>
+						<div class="sbox-desc"></div>
 					</div>
 				</div>
 			</div>
@@ -293,13 +293,13 @@
 				<!--서브 배너-->
 				<div class="sub-banner sub-banner-show">
 					<a href="https://coupa.ng/bVJG3u" target="_blank"><img src="img/banner-img1.png" alt="쿠팡로켓배송">
-					<p><i class="xi-info-o"></i></p>
+						<p><i class="xi-info-o"></i></p>
 					</a>
 				</div>
 				<!--서브 배너 끝-->
 			</div>
 			<!--movie-show : 영화 상세 정보 종료-->
-			
+
 			<!--영화 데이터 저장-->
 			<div style="display: none;" class="result-data">
 				<div class="result-data-1"></div>
@@ -324,7 +324,7 @@
 				</div>
 				<div class="banner-3 banner-design">
 					<!--300size img-->
-					<a href="https://coupa.ng/bVIkON" target="_blank"><img src="img/banner3-img2.png" alt="쿠팡쇼핑">			
+					<a href="https://coupa.ng/bVIkON" target="_blank"><img src="img/banner3-img2.png" alt="쿠팡쇼핑">
 					</a>
 				</div>
 				<div class="coupang-text">파트너스 활동을 통해 일정액의 수수료를 제공받을 수 있음</div>
@@ -356,15 +356,19 @@
 				</a>
 				<script type="text/javascript">
 					Kakao.init('d2199115ee7ad4deae9e9ac0a1547389');
+
 					function sendLink() {
 						Kakao.Link.sendScrap({
 							requestUrl: 'https://www.boxoffice.kro.kr'
 						});
 					}
+
 				</script>
 			</div>
 		</footer>
 		<!--푸터 종료-->
 	</div>
 
-</body></html>
+</body>
+
+</html>
