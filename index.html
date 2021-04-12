@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.">
+	<meta name="theme-color" content="#6200ea">
 	<meta property="og:title" content="무비피플 - 한국 박스오피스 순위 TOP10">
 	<meta property="og:description" content="영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.">
 	<meta property="og:image" content="https://www.boxoffice.kro.kr/img/logo-800x800-og.png">
@@ -69,7 +70,7 @@
 	<!-- 서비스 워커를 등록 -->
 	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('js/iconsw.js')
+			navigator.serviceWorker.register('/service-worker.js')
 				.then((reg) => {
 					console.log('서비스 워커가 등록됨.', reg);
 				});
