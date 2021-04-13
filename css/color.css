@@ -41,15 +41,9 @@ header {
 	background: #6200ee;
 	color: #fff;
 }
-#search-bar-btn:active {
-	background: #b9fb05;
-	color: #6200ee;
-}
-header #menu-open-btn:active {background: #b9fb05; border-radius: 50%;}
 
 /*nav {background: #2c006c;}*/
 nav {background: #9d46ff;}
-nav #menu-close-btn:active {background: #b9fb05; border-radius: 50%;}
 nav .nav-menu #accordion p {border-bottom: solid 1px #6200ee;}
 nav .nav-menu h3:hover {background: #6200ee;}
 nav .nav-menu #accordion p:hover {color: #6200ee;}

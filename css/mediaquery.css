@@ -1,8 +1,6 @@
 
 /*미디어 쿼리*/
 @media screen and (min-width: 1025px) {
-main .input-date-box {background: yellow;}
-	
 	header #menu-open-btn,
 	#search-bar-btn,
 	nav,
@@ -12,6 +10,10 @@ main .input-date-box {background: yellow;}
 	nav .nav-menu #accordion p i,
 	main .m-con2 .sel-date input[type='button'],
 	main .m-con3 .sel-date input[type='button'] {transition: all 0.2s;}
+	
+	header #menu-open-btn:active {background: #b9fb05; border-radius: 50%;}
+	#search-bar-btn:active {background: #b9fb05;color: #6200ee;}
+	nav #menu-close-btn:active {background: #b9fb05; border-radius: 50%;}
 }
 
 @media screen and (max-width: 1599px) {
