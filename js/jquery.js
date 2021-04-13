@@ -1,6 +1,7 @@
   $(function () {
 		$('div[class^="m-con"]').hide();
 		$('.m-con1').show();
+		$('nav').hide();
 		$('#accordion-m1').next('div').hide();
 		$('#accordion-m2').next('div').hide();
 		
@@ -43,13 +44,15 @@
 		
 		/*메뉴 버튼*/
 		$('#menu-open-btn').on('click', function(){
-			$('nav').addClass('on');
+			$('nav').show();
+//			$('nav').addClass('on');
 		});
 		/*메뉴 버튼 종료*/
 		
 		/*클로즈 버튼*/
 		$('#menu-close-btn').on('click', function(){
-			$('nav').removeClass('on');
+			$('nav').hide();
+//			$('nav').removeClass('on');
 		});
 		/*클로즈 버튼 종료*/
 
