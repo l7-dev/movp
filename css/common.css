@@ -61,7 +61,7 @@ input[type=date]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
-input[type=date] {text-align: center;}
+input[type=date] {display: inline-block; text-align: center;}
 
 /*header*/
 header {
