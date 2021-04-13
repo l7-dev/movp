@@ -1,9 +1,11 @@
   $(function () {
 		$('div[class^="m-con"]').hide();
 		$('.m-con1').show();
+		$('#accordion-m1').next('div').hide();
+		$('#accordion-m2').next('div').hide();
 		
 		/*아코디언 플러그인 옵션*/
-  	var icons = {
+  	/*var icons = {
   		header: "ui-icon-circle-arrow-e",
   		activeHeader: "ui-icon-circle-arrow-s"
   	};
@@ -20,8 +22,24 @@
   		} else {
   			$("#accordion").accordion("option", "icons", icons);
   		}
-  	});
+  	});*/
 		/*아코디언 종료*/
+		
+		/*nav 아코디언*/
+		$('#accordion-m1').on('click', function(){
+			$('#accordion-m2').next('div').hide();
+			$('#accordion-m2').find('span i').removeClass().addClass('xi-caret-down-square-o');
+			$(this).next('div').slideToggle(100);
+			$(this).find('span i').toggleClass('xi-caret-down-square-o xi-caret-up-square-o');
+		});
+		
+		$('#accordion-m2').on('click', function(){
+			$('#accordion-m1').next('div').hide();
+			$('#accordion-m1').find('span i').removeClass().addClass('xi-caret-down-square-o');
+			$(this).next('div').slideToggle(100);
+			$(this).find('span i').toggleClass('xi-caret-down-square-o xi-caret-up-square-o');
+		});
+		
 		
 		/*메뉴 버튼*/
 		$('#menu-open-btn').on('click', function(){
