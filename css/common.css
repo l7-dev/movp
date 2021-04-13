@@ -54,15 +54,6 @@ button {
 	outline: none;
 }
 
-input[type=date]::-webkit-calendar-picker-indicator:hover { cursor: pointer;}
-
-input[type=date]::-webkit-inner-spin-button, 
-input[type=date]::-webkit-outer-spin-button { 
-  -webkit-appearance: none;
-}
-
-input[type=date] {display: inline-block; text-align: center;}
-
 /*header*/
 header {
 	width: 100%;
@@ -326,14 +317,17 @@ main .m-con3 .sel-date {
 }
 main .m-con2 .sel-date input,
 main .m-con3 .sel-date input {
+	display: inline-block;
 	padding: 5px 20px;
 	line-height: 24px;
+	vertical-align: baseline;
 }
 main .m-con2 .sel-date input[type='date'],
 main .m-con3 .sel-date input[type='date'] {
 		position: relative;
 		margin: 5px 10px 0 0;
 		width: 160px;
+		height: 24px;
 		text-align: center;
 }
 main .m-con2 .sel-date input[type='button'],
@@ -353,6 +347,13 @@ main input[type="date"]::-webkit-calendar-picker-indicator {
         height: 32px;
         width: auto;
 				background: transparent;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator:hover { cursor: pointer;}
+
+input[type=date]::-webkit-inner-spin-button, 
+input[type=date]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
 }
 
 main .m-con3 .cont3-desc {margin: 50px 0 70px;}
