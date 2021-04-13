@@ -61,17 +61,20 @@
 				$boxObtn2 = $('#boxoffice2'),
 		 		$boxObtn3 = $('#boxoffice3');
 		$boxObtn1.on('click', function(){
-			$('nav').removeClass('on');
+			$('nav').hide();
+//			$('nav').removeClass('on');
 			$('div[class^="m-con"]').hide();
 			$('.m-con1').show();
 		});
 		$boxObtn2.on('click', function(){
-			$('nav').removeClass('on');
+			$('nav').hide();
+//			$('nav').removeClass('on');
 			$('div[class^="m-con"]').hide();
 			$('.m-con2').show();
 		});
 		$boxObtn3.on('click', function(){
-			$('nav').removeClass('on');
+			$('nav').hide();
+//			$('nav').removeClass('on');
 			$('div[class^="m-con"]').hide();
 			$('.m-con3').show();
 		});
