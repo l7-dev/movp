@@ -112,14 +112,17 @@ nav {
 	position: absolute;
 	top: 0px;
 	bottom: 0px;
-	left: -400px;
-	width: 400px;
+	left: 0;
+/*	left: -400px;*/
+/*	width: 400px;*/
 	z-index: 3;
 }
 
+/*
 nav.on {
 	left: 0;
 }
+*/
 
 nav h3 {
 	font-weight: 400;

@@ -14,10 +14,12 @@
 	header #menu-open-btn:active {background: #b9fb05; border-radius: 50%;}
 	#search-bar-btn:active {background: #b9fb05;color: #6200ee;}
 	nav #menu-close-btn:active {background: #b9fb05; border-radius: 50%;}
+	nav {width: 400px;}
 }
 
 @media screen and (max-width: 1599px) {
-	nav.on {width: 100%;}
+	nav {width: 100%;}
+/*	nav.on {width: 100%;}*/
 }
 
 /*미디어 쿼리 종료*/
