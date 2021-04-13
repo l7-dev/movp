@@ -1,8 +1,21 @@
 
 /*미디어 쿼리*/
+@media screen and (min-width: 1025px) {
+main .input-date-box {background: yellow;}
+	
+	header #menu-open-btn,
+	#search-bar-btn,
+	nav,
+	nav #menu-close-btn,
+	nav .nav-menu h3,
+	nav .nav-menu #accordion p,
+	nav .nav-menu #accordion p i,
+	main .m-con2 .sel-date input[type='button'],
+	main .m-con3 .sel-date input[type='button'] {transition: all 0.2s;}
+}
+
 @media screen and (max-width: 1599px) {
 	nav.on {width: 100%;}
-	
 }
 
 /*미디어 쿼리 종료*/

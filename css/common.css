@@ -79,7 +79,6 @@ header #menu-open-btn {
 	left: 20px;
 	font-size: 30px;
 	cursor: pointer;
-/*	transition: all 0.2s;*/
 }
 
 #search-bar-box {
@@ -106,7 +105,6 @@ header #menu-open-btn {
 	line-height: 100%;
 	box-sizing: border-box;
 	border: solid 2px;
-	transition: all 0.2s;
 }
 
 /*네비게이션*/
@@ -117,7 +115,6 @@ nav {
 	left: -400px;
 	width: 400px;
 	z-index: 3;
-/*	transition: all 0.1s;*/
 }
 
 nav.on {
@@ -135,7 +132,6 @@ nav #menu-close-btn {
 	font-size: 30px;
 	cursor: pointer;
 	z-index: 4;
-/*	transition: all 0.1s;*/
 }
 
 nav .logo-title {
@@ -162,9 +158,9 @@ nav .nav-menu #accordion p {
 nav .nav-menu #accordion p a {
 	display: block;
 }
-nav .nav-menu h3 {transition: all 0.2s;}
+nav .nav-menu h3 {}
 nav .nav-menu #accordion p,
-nav .nav-menu #accordion p i {transition: all 0.2s;}
+nav .nav-menu #accordion p i {}
 nav .nav-menu #accordion p:hover i {transform: rotateZ(-30deg);}
 nav .ct-day {
 	margin: 20px 0 10px;
@@ -315,16 +311,16 @@ main .m-con3 .sel-date {
 	position: relative;
 	margin-top: 12px;
 }
-main .input-date-box {height: 34px;}
+main .input-date-box {}
 main .m-con2 .sel-date input,
 main .m-con3 .sel-date input {
-	display: inline-block;
+	margin-top: 4px;
 	padding: 5px 20px;
 	line-height: 24px;
 }
 main .m-con2 .sel-date input[type='date'],
 main .m-con3 .sel-date input[type='date'] {
-		position: relative;
+		position: relative; 
 		margin: 0px 10px;
 		width: 160px;
 		height: 24px;
@@ -334,7 +330,6 @@ main .m-con2 .sel-date input[type='button'],
 main .m-con3 .sel-date input[type='button'] {
 	cursor: pointer;
 	text-align: center;
-	transition: all 0.2s;
 }
 main input[type="date"]::-webkit-calendar-picker-indicator {
         position: absolute;
@@ -342,9 +337,9 @@ main input[type="date"]::-webkit-calendar-picker-indicator {
         right: 0px;
         top: 0;
 	      bottom: 0;
+				height: 30px;
         color: transparent;
         cursor: pointer;
-        height: 32px;
         width: auto;
 				background: transparent;
 }
