@@ -315,6 +315,7 @@ main .m-con3 .sel-date {
 	position: relative;
 	margin-top: 12px;
 }
+main .input-date-box {height: 34px;}
 main .m-con2 .sel-date input,
 main .m-con3 .sel-date input {
 	display: inline-block;
