@@ -166,6 +166,9 @@ nav .nav-menu div {
 nav .nav-menu #accordion p {
 	padding: 0 30px;
 }
+nav .nav-menu #accordion p a {
+	display: block;
+}
 nav .nav-menu h3 {transition: all 0.2s;}
 nav .nav-menu #accordion p,
 nav .nav-menu #accordion p i {transition: all 0.2s;}
