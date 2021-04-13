@@ -431,6 +431,9 @@ main .sbox .sbox-date {
 
 main .sbox .sbox-pd {
 	margin-left: 80px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 main .sbox-list-bg {
