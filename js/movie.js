@@ -51,7 +51,7 @@ $(function () {
 	$tResult.html(year + '년 ' + montharray[month] + ' ' + daym + '일 ' + dayarray[day] + '<br>');
 	/*오늘날짜 표시 - 종료*/
 
-		/*마지막 수요일 표시*/
+		/*문화가 있는 날 마지막 수요일 표시*/
 		var today = new Date(),
 		lastDay = new Date(
 			today.getFullYear(),
@@ -67,7 +67,7 @@ $(function () {
 		thisDate = new Date(thisYear + '-' + thisMonth + '-' + dNum);
 		thisDay = thisDate.getDay();
 		if (thisDay == 3) {
-			$('.ct-day').find('span').html(montharray[month] + ' ' + dNum + '일 ' + '수요일');
+			$('.ct-day').find('span').html(montharray[month] + ' ' + dNum + '일 ' + '&lpar;수&rpar;');
 		}
 	}
 	/*마지막 수요일 표시 종료*/
