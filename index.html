@@ -11,10 +11,42 @@
 	<meta property="og:title" content="무비피플 - 한국 박스오피스 순위 TOP10">
 	<meta property="og:description" content="영화 실시간 박스오피스, 주간 박스오피스 검색할땐 무비피플을 사용 하세요.">
 	<meta property="og:image" content="https://www.boxoffice.kro.kr/img/logo-800x800-og.png">
-	<meta property="og:url" content="https://www.boxoffice.kro.kr">
+	<meta property="og:url" content="https://www.boxoffice.kro.kr?utm_source=og&utm_medium=ogurl">
 	<meta property="og:type" content="website">
 	<link rel="canonical" href="https://www.boxoffice.kro.kr/index.html">
 
+	<!-- Google Tag Manager -->
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-K75RNB4');
+	</script>
+	<!-- End Google Tag Manager -end-->
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-FQ11HR0QD3"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-FQ11HR0QD3');
+	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -end-->
 	<title>무비피플 - 영화 박스오피스 TOP10</title>
 	<link rel="shortcut icon" href="https://www.boxoffice.kro.kr/favicon.ico" type="image/x-icon">
 
@@ -79,6 +111,9 @@
 </head>
 
 <body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K75RNB4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 	<div class="all-wrap">
 		<!--헤더 시작-->
 		<header>
@@ -196,8 +231,8 @@
 					<div class="sel-date">
 						<h4>선택한 날짜의 박스오피스</h4><br>
 						<div class="input-date-box">
-						<input type="date" class="datepicker" id="datepicker1" placeholder="날짜를 선택 하세요." onkeydown="return false">
-						<input type="button" value="확인" id="sel-date-bt1">
+							<input type="date" class="datepicker" id="datepicker1" placeholder="날짜를 선택 하세요." onkeydown="return false">
+							<input type="button" value="확인" id="sel-date-bt1">
 						</div>
 					</div>
 					<div class="subtitle-blank"></div>
@@ -230,8 +265,8 @@
 					<div class="sel-date">
 						<h4>선택한 날짜가 속한 주차</h4><br>
 						<div class="input-date-box">
-						<input type="date" class="datepicker" id="datepicker2" placeholder="날짜를 선택 하세요." onkeydown="return false">
-						<input type="button" value="확인" id="sel-date-bt2">
+							<input type="date" class="datepicker" id="datepicker2" placeholder="날짜를 선택 하세요." onkeydown="return false">
+							<input type="button" value="확인" id="sel-date-bt2">
 						</div>
 					</div>
 					<div class="subtitle-blank"></div>
@@ -369,13 +404,10 @@
 							requestUrl: 'https://www.boxoffice.kro.kr'
 						});
 					}
-
 				</script>
 			</div>
 		</footer>
 		<!--푸터 종료-->
 	</div>
 
-</body>
-
-</html>
+</body></html>
