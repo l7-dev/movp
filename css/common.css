@@ -151,14 +151,22 @@ nav .nav-menu {
 nav .nav-menu div {
 	line-height: 40px;
 }
-
+nav .nav-menu #accordion h3 {
+	position: relative;
+	cursor: pointer;
+}
+nav .nav-menu #accordion h3 span {
+	position: absolute;
+	display: block;
+	top: 0;
+	right: 0;
+}
 nav .nav-menu #accordion p {
 	padding: 0 30px;
 }
 nav .nav-menu #accordion p a {
 	display: block;
 }
-nav .nav-menu h3 {}
 nav .nav-menu #accordion p,
 nav .nav-menu #accordion p i {}
 nav .nav-menu #accordion p:hover i {transform: rotateZ(-30deg);}
