@@ -12,7 +12,7 @@
   		icons: icons,
   		collapsible: true,
   		active: false,
-  		animate: 100
+  		animate: 0
   	});
   	$("#toggle").button().on("click", function () {
   		if ($("#accordion").accordion("option", "icons")) {
