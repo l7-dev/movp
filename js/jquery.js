@@ -158,7 +158,7 @@
 
 	function click() {
 		if ((event.button == 2) || (event.button == 2)) {
-			alert('마트랑계산기 :: 마트갈때 필수품');
+			alert('무비피플 - 영화박스오피스TOP10');
 		}
 	}
 	document.onmousedown = click;
