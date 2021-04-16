@@ -78,6 +78,9 @@ main .movie-show-desc {background: #6200ee;}
 main .movie-show-desc li:nth-child(2) {border-bottom: 4px solid #b9fb05;}
 main .movie-show-desc .movie-link {border: 2px solid #fff;}
 
+/*쿠팡문구*/
+.coupang-text {color: #0047ff}
+
 /*맨위로 버튼*/
 #top-btn {background: rgba(0, 0, 0, 0.8);	border: 2px solid #b9fb05; color:#fff;}
 footer {background: #6200ee;}

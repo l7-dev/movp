@@ -561,7 +561,7 @@ main .m-banner .banner-1 {background: #D9EBFF;}
 main .m-banner .banner-2 {background: linear-gradient(180deg, #fff4e0 70%, #ffee9c 30%);}
 main .m-banner .banner-3 {background: url('../img/banner/banner3-img1.png'), linear-gradient(45deg, #FFDEE9 0%, #B5FFFC 100%);
 ;}
-.coupang-text {font-size: 1.2rem; color: aqua;}
+.coupang-text {font-size: 1.2rem;}
 
 /*서브 배너*/
 .sub-banner {
