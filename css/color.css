@@ -16,31 +16,15 @@
 }*/
 body {background: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%) fixed, #08c8f6; color: #fff;}
 
-input:-ms-input-placeholder {
-	color: #aaa;
-}
+input:-ms-input-placeholder {color: #aaa;}
+input::-webkit-input-placeholder {color: #aaa;}
+input::-moz-placeholder {color: #aaa;}
 
-input::-webkit-input-placeholder {
-	color: #aaa;
-}
+header {background: #6200ee;}
 
-input::-moz-placeholder {
-	color: #aaa;
-}
+#search-bar-input {background: #ffffff; color: #000;}
 
-header {
-	background: #6200ee;
-}
-
-#search-bar-input {
-	background: #ffffff;
-	color: #000;
-}
-
-#search-bar-btn {
-	background: #6200ee;
-	color: #fff;
-}
+#search-bar-btn {background: #6200ee;	color: #fff;}
 
 /*nav {background: #2c006c;}*/
 nav {background: #9d46ff;}
@@ -58,21 +42,15 @@ main .rbox::after {background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2,
 main .rbox::before {background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);}
 main .rbox-arrow span {color: #b9fb05;}
 
-main .rbox-rank-bg {
-	border-bottom: 100px solid #6200ee;
-}
+main .rbox-rank-bg {border-bottom: 100px solid #6200ee;}
 /*main sbox*/
 main .sbox::after {background: linear-gradient(45deg, #ffd800, #0cbcf2, #9bf2e4, #c88eea, #ed74dd, #fff68f);}
 main .sbox::before {background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);}
 /*main .sbox::after {background: linear-gradient(45deg, #7ee8fa, #eec0c6, #A9C9FF, #FFBBEC);}
 main .sbox::before {background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);}*/
-main .sbox-list-bg {
-	border-bottom: 100px solid #9d46ff;
-}
+main .sbox-list-bg {border-bottom: 100px solid #9d46ff;}
 /*main movie-show*/
-main .movie-show {
-	background: rgba(0, 0, 0, 0.9);
-}
+main .movie-show {background: rgba(0, 0, 0, 0.9);}
 main .movie-show-close span {background: #6200ee; color: #fff; border: 2px solid #fff;}
 main .movie-show-desc {background: #6200ee;}
 main .movie-show-desc li:nth-child(2) {border-bottom: 4px solid #b9fb05;}
