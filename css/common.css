@@ -279,6 +279,7 @@ main .rbox-rank-gap {
 	font-style: italic;
 }
 
+/*애로우 애니메이션 선택하기*/
 main .rbox-arrow {
 	position: absolute;
 	font-style: italic;
@@ -286,8 +287,10 @@ main .rbox-arrow {
 	bottom: 40px;
 	right: 10px;
 }
+main .rbox-arrow span:nth-child(1) {opacity: 40%;}
+main .rbox-arrow span:nth-child(2) {opacity: 70%;}
 
-/* 위에코드 혹은 이코드중에 선택 
+/* 위에코드3개 혹은 이코드중에 선택 
 main .rbox-arrow span {
 	position: absolute;
 	font-style: italic;
