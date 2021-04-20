@@ -279,13 +279,24 @@ main .rbox-rank-gap {
 	font-style: italic;
 }
 
-main .rbox-arrow span {
+main .rbox-arrow {
 	position: absolute;
-	bottom: 40px;
 	font-style: italic;
 	display: block;
+	bottom: 40px;
+	right: 10px;
+}
+
+/* 위에코드 혹은 이코드중에 선택 
+main .rbox-arrow span {
+	position: absolute;
+	font-style: italic;
+	display: block;
+	bottom: 40px;
+	right: 20px;
 	animation: arrow 1.5s linear infinite;
 }
+*/
 
 main .rbox-arrow span:nth-child(1) {
 	animation-delay: 0s;
