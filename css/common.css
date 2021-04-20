@@ -287,8 +287,8 @@ main .rbox-arrow {
 	bottom: 40px;
 	right: 10px;
 }
-main .rbox-arrow span:nth-child(1) {opacity: 40%;}
-main .rbox-arrow span:nth-child(2) {opacity: 70%;}
+/*main .rbox-arrow span:nth-child(1) {opacity: 40%;}
+main .rbox-arrow span:nth-child(2) {opacity: 70%;}*/
 
 /* 위에코드3개 혹은 이코드중에 선택 
 main .rbox-arrow span {
@@ -299,8 +299,6 @@ main .rbox-arrow span {
 	right: 20px;
 	animation: arrow 1.5s linear infinite;
 }
-*/
-
 main .rbox-arrow span:nth-child(1) {
 	animation-delay: 0s;
 }
@@ -312,7 +310,6 @@ main .rbox-arrow span:nth-child(2) {
 main .rbox-arrow span:nth-child(3) {
 	animation-delay: 1s;
 }
-
 @keyframes arrow {
 	0% {
 		right: 40px;
@@ -326,6 +323,7 @@ main .rbox-arrow span:nth-child(3) {
 		transform: scale(1);
 	}
 }
+*/
 
 /*main .m-con*/
 main .m-con1 .date {
