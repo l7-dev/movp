@@ -574,6 +574,20 @@ main .m-banner .banner-2 {background: linear-gradient(180deg, #fff4e0 70%, #ffee
 main .m-banner .banner-3 {background: url('../img/banner/banner3-img1.png'), linear-gradient(45deg, #FFDEE9 0%, #B5FFFC 100%);}
 .coupang-text {font-size: 1.2rem;}
 
+/*공지사항*/
+
+main .notice {display: none;} 
+main .notice.on {display: block; height: 100px;} 
+main .notice [class^="notice-"] {display: none;}
+main .notice [class^="notice-"].on {
+	display: block;
+	margin-top: 20px;
+	background: #0af;
+	line-height: 1.3;
+	padding: 10px;
+} 
+
+
 /*서브 배너*/
 .sub-banner.cp-mobile {background-color: #FF3CAC; background-image: linear-gradient(210deg, #FF3CAC 0%, #784BA0 50%, #0097ff 100%);}
 .sub-banner.cp-apple {background: url('../img/banner/banner3-img1.png'), linear-gradient(45deg, #FFDEE9 0%, #B5FFFC 100%);}
