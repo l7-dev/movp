@@ -14,7 +14,7 @@
 	background: -o-linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
 	background: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%);
 }*/
-body {background: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%) fixed, #08c8f6; color: #fff;}
+body {background: #08c8f6; background: linear-gradient(315deg, #4d5dfb 0%, #08c8f6 74%) fixed, #08c8f6; color: #fff;}
 
 input:-ms-input-placeholder {color: #aaa;}
 input::-webkit-input-placeholder {color: #aaa;}

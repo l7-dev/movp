@@ -22,4 +22,8 @@
 /*	nav.on {width: 100%;}*/
 }
 
+@media screen and (max-width: 640px) {
+	body {background: #08c8f6;}
+}
+
 /*미디어 쿼리 종료*/
