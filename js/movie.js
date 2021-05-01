@@ -53,10 +53,7 @@ $(function () {
 
 		/*문화가 있는 날 마지막 수요일 표시*/
 		var today = new Date(),
-		lastDay = new Date(
-			today.getFullYear(),
-			today.getMonth() + 1,
-			0).getDate(), //이번달의 마지막 날
+		lastDay = new Date(today.getFullYear(),today.getMonth() + 1,0).getDate(), //이번달의 마지막 날
 		thisYear = today.getFullYear(),
 		thisMonth = today.getMonth() + 1,
 		thisDate = new Date(),
@@ -74,7 +71,7 @@ $(function () {
 
 	/*실시간 박스 오피스*/
 	function dailyrank() {
-		$('.rbox1-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...');
+		$('.rbox1-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...<br><br><br>');
 		var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key='+openner+'&targetDt=';
 		
     url += maxYesdaystring.replace(/-/g, '');
@@ -84,17 +81,17 @@ $(function () {
       type: 'get',
       dataType: 'json',
       success: function (item) {
-				$('.rbox1-top').html('');
-        $.each(item.boxOfficeResult.dailyBoxOfficeList, function (i, content) {
+		  $('.rbox1-top').html('');
+		  $.each(item.boxOfficeResult.dailyBoxOfficeList, function (i, content) {
           var rankNum = content.rank;
-					var str = "";
+		  var str = "";
           var rankInten = parseInt(content.rankInten);
           if (rankInten > 0) str += "&uarr;"; //상승
           else if (rankInten < 0) str += "&darr;"; //하락
           else str = str + "&bull;";
           str += rankInten; //상승하락폭
           var movieCd = content.movieCd;
-					var attrMovieCd = "show(" + content.movieCd + ")";
+		  var attrMovieCd = "show(" + content.movieCd + ")";
           $(".rbox1-bottom").next().find(".rbox-a").attr("onclick", attrMovieCd);
           $(".rbox1-bottom").next().find(".rbox-rank-p").html(content.rank);
           $(".rbox1-bottom").next().find(".rbox-title").html(content.movieNm);
@@ -114,7 +111,7 @@ $(function () {
 	/*일별 박스 오피스*/
 	function selDrank(sdate) {
 		$('.m-con2 .rbox').hide();
-		$('.rbox2-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...');
+		$('.rbox2-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...<br><br><br>');
 
 		var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key='+openner+'&targetDt='+sdate;
 
@@ -123,18 +120,18 @@ $(function () {
       type: 'get',
       dataType: 'json',
       success: function (item) {
-				$('.rbox2-top').html('');
-				$('.m-con2 .rbox').show();
-        $.each(item.boxOfficeResult.dailyBoxOfficeList, function (i, content) {
+		$('.rbox2-top').html('');
+		$('.m-con2 .rbox').show();
+          $.each(item.boxOfficeResult.dailyBoxOfficeList, function (i, content) {
           var rankNum = content.rank;
-					var str = "";
+		  var str = "";
           var rankInten = parseInt(content.rankInten);
           if (rankInten > 0) str += "&uarr;"; //상승
           else if (rankInten < 0) str += "&darr;"; //하락
           else str = str + "&bull;";
           str += rankInten; //상승하락폭
           var movieCd = content.movieCd;
-					var attrMovieCd = "show(" + content.movieCd + ")";
+		  var attrMovieCd = "show(" + content.movieCd + ")";
           $(".rbox2-bottom").next().find(".rbox-a").attr("onclick", attrMovieCd);
           $(".rbox2-bottom").next().find(".rbox-rank-p").html(content.rank);
           $(".rbox2-bottom").next().find(".rbox-title").html(content.movieNm);
@@ -152,36 +149,36 @@ $(function () {
 	/*일별 박스 오피스 종료*/
 	
 	/*주간 박스 오피스*/
-		function selWrank(sdate) {
+	function selWrank(sdate) {
 			$('.m-con3 .rank-list').show();
 			$('.m-con3 .cont3-desc').hide();
 			$('.m-con3 .rbox').hide();
 						
-			$('.rbox3-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...');
+			$('.rbox3-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...<br><br><br>');
 			var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key='+openner+'&targetDt='+sdate+'&weekGb=0';
-    	$.ajax({
-      url: url,
-      type: 'get',
-      dataType: 'json',
-      success: function (item) {
-				$('.rbox3-top').html('');
-				$('.m-con3 .rbox').show();
-        $.each(item.boxOfficeResult.weeklyBoxOfficeList, function (i, content) {
-          var rankNum = content.rank;
-					var str = "";
-          var rankInten = parseInt(content.rankInten);
-          if (rankInten > 0) str += "&uarr;"; //상승
-          else if (rankInten < 0) str += "&darr;"; //하락
-          else str = str + "&bull;";
-          str += rankInten; //상승하락폭
-          var movieCd = content.movieCd;
-					var attrMovieCd = "show(" + content.movieCd + ")";
-          $(".rbox3-bottom").next().find(".rbox-a").attr("onclick", attrMovieCd);
-          $(".rbox3-bottom").next().find(".rbox-rank-p").html(content.rank);
-          $(".rbox3-bottom").next().find(".rbox-title").html(content.movieNm);
-          $(".rbox3-bottom").next().find(".rbox-date-span").html(content.openDt);
-          $(".rbox3-bottom").next().find(".rbox-num-span").html(comma(content.audiAcc));
-          $(".rbox3-bottom").next().find(".rbox-rank-gap").html(str);
+    $.ajax({
+		url: url,
+		type: 'get',
+		dataType: 'json',
+		success: function (item) {
+			$('.rbox3-top').html('');
+			$('.m-con3 .rbox').show();
+			$.each(item.boxOfficeResult.weeklyBoxOfficeList, function (i, content) {
+			var rankNum = content.rank;
+			var str = "";
+			var rankInten = parseInt(content.rankInten);
+			if (rankInten > 0) str += "&uarr;"; //상승
+			else if (rankInten < 0) str += "&darr;"; //하락
+			else str = str + "&bull;";
+			str += rankInten; //상승하락폭
+			var movieCd = content.movieCd;
+			var attrMovieCd = "show(" + content.movieCd + ")";
+			$(".rbox3-bottom").next().find(".rbox-a").attr("onclick", attrMovieCd);
+			$(".rbox3-bottom").next().find(".rbox-rank-p").html(content.rank);
+			$(".rbox3-bottom").next().find(".rbox-title").html(content.movieNm);
+			$(".rbox3-bottom").next().find(".rbox-date-span").html(content.openDt);
+			$(".rbox3-bottom").next().find(".rbox-num-span").html(comma(content.audiAcc));
+			$(".rbox3-bottom").next().find(".rbox-rank-gap").html(str);
 					if (i < 9) {
 					var $rankClone = $(".rbox3-bottom").next().clone();
 					$(".rbox3-top").append($rankClone);
@@ -193,53 +190,53 @@ $(function () {
 	/*주간 박스 오피스 종료*/
 	
 	/*show() : 영화 선택시 상세정보*/
-window.show = function(movieCd) {
+	window.show = function(movieCd) {
 	$( 'html, body' ).animate( { scrollTop : 0 }, 300 );
 	$('.movie-show').show();
-  var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key='+openner+'&movieCd=';
-  url += movieCd;
-	$('.movie-show-desc').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...');
-  $.ajax({
+	var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key='+openner+'&movieCd=';
+	url += movieCd;
+	$('.movie-show-desc').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...<br><br><br>');
+	$.ajax({
     url: url,
     dataType: 'json',
     success: function (item) {
-      var str = "";
-      var movieInfo = item.movieInfoResult.movieInfo;
-      var movieNm = movieInfo.movieNm;
-      var movieNmEn = movieInfo.movieNmEn;
-      var movieGnr = movieInfo.genres[0].genreNm;
-			var showTm = movieInfo.showTm;
-			var movieType = movieInfo.typeNm;
-			var movieYear = movieInfo.prdtYear;
-			var movieOpen = movieInfo.openDt;
-			var movieNation = movieInfo.nations[0].nationNm;
-			if (movieInfo.directors.length > 0) {
-				var director = movieInfo.directors[0].peopleNm;
+		var str = "";
+		var movieInfo = item.movieInfoResult.movieInfo;
+		var movieNm = movieInfo.movieNm;
+		var movieNmEn = movieInfo.movieNmEn;
+		var movieGnr = movieInfo.genres[0].genreNm;
+		var showTm = movieInfo.showTm;
+		var movieType = movieInfo.typeNm;
+		var movieYear = movieInfo.prdtYear;
+		var movieOpen = movieInfo.openDt;
+		var movieNation = movieInfo.nations[0].nationNm;
+		if (movieInfo.directors.length > 0) {
+			var director = movieInfo.directors[0].peopleNm;
 			} else {var director = '--'}
-      var people = "";
-      var length = movieInfo.actors.length;
-			var kakaoQuery = movieNm + movieYear;
-			var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
+		var people = "";
+		var length = movieInfo.actors.length;
+		var kakaoQuery = movieNm + movieYear;
+		var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
 
 			$.ajax({
 				url: weburl,
-      	dataType: 'html',
-          }).done(function (html1) {
-						var mImg = $("div.movie_info img.thumb_img", html1); //썸네일
+				dataType: 'html',
+			}).done(function (html1) {
+						var mImg = $("div.movie_info img.thumb_img", html1); //find:html1 썸네일
 						var mStory = $("div.movie_story a", html1); //줄거리
 						var mData = $(".dl_comp.dl_link", html1); //기타 데이터
 						var mCount = new Array();
-						var movieIurl = 'https://www.boxoffice.kro.kr/img/poster130.jpg';
+						//var movieIurl = 'https://www.boxoffice.kro.kr/img/poster130.jpg';
 						var movieStory = new Array();
 						var movieCount = "";
 				
             if (mImg.length != 0 && mStory.length != 0 && mData.length != 0 ) {
-              $('.result-data-1').html(mImg[0]);
-							$('.result-data-2').html(mStory[0].innerHTML);
-							$('.result-data-3').html(mData);
-							 goDetail();	
-							} else {
-              console.log('이미지가 없습니다.');
+				$('.result-data-1').html(mImg[0]);
+				$('.result-data-2').html(mStory[0].innerHTML);
+				$('.result-data-3').html(mData);
+				goDetail();	
+				} else {
+				console.log('이미지가 없습니다.');
 							$.each(movieInfo.actors, function (i, content) {
         				if (i == length - 1) {
 										people += content.peopleNm;
@@ -247,82 +244,82 @@ window.show = function(movieCd) {
 										people += content.peopleNm + ", ";
 									}
       					});
-									str += '<div class="movie-poster"><img src="' + movieIurl + '"></div>';
+							var movieIurl = $("span.thumb_bf > img", html1).eq(0).attr('data-original-src');
+							str += '<div class="movie-poster"><img src="' + movieIurl + '"></div>';
       						str += '<ul><li>' + movieNm + '</li>';
       						str += '<li>' + movieNmEn + '</li>';
       						str += '<li><b>영화장르</b> - ' + movieGnr + '</li>';
       						str += '<li><b>상영시간</b> - ' + showTm + '분</li>';
-									str += '<li><b>영화유형</b> - ' + movieType + '</li>';
+							str += '<li><b>영화유형</b> - ' + movieType + '</li>';
       						str += '<li><b>제작년도</b> - ' + movieYear + '년</li>';
       						str += '<li><b>개봉날짜</b> - ' + movieOpen.substring(0, 4) + '년 ' + movieOpen.substring(4, 6) + '월 ' + movieOpen.substring(6, 8) + '일' + '</li>';
       						str += '<li><b>제작국가</b> - ' + movieNation + '</li>';
       						str += '<li><b>영화감독</b> - ' + director + '</li>';
       						str += '<li><b>출연배우</b> - ' + people + '</li>';
-									str += '<li class="movie-link"><a href="https://movie.daum.net/search?q='+ movieNm +'#tab=movie" target="_blank"><span>DAUM영화에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
+							str += '<li class="movie-link"><a href="https://movie.daum.net/search?q='+ movieNm +'#tab=movie" target="_blank"><span>DAUM영화에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
       						$('.movie-show-desc').html(str);	
             	}
 									
-						function goDetail() {
-							movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
+				function goDetail() {
+					movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
 
-              movieStory = $(document).find('.result-data-2');
+					movieStory = $(document).find('.result-data-2');
 													
-							mCount = $(document).find('.result-data-3').children('dl:nth-child(3)').find('span');
+					mCount = $(document).find('.result-data-3').children('dl:nth-child(3)').find('span');
 
-              if (mCount.length > 0) {movieCount = mCount[0].innerText;} else {movieCount = '--'}
+					if (mCount.length > 0) {movieCount = mCount[0].innerText;} else {movieCount = '--'}
 							
-							$.each(movieInfo.actors, function (i, content) {
-        				if (i == length - 1) {
+						$.each(movieInfo.actors, function (i, content) {
+							if (i == length - 1) {
 										people += content.peopleNm;
 									} else {
 										people += content.peopleNm + ", ";
 									}
       					});
-									str += '<div class="movie-poster"><img src="' + movieIurl + '"></div>';
+							str += '<div class="movie-poster"><img src="' + movieIurl + '"></div>';
       						str += '<ul><li>' + movieNm + '</li>';
       						str += '<li>' + movieNmEn + '</li>';
-									str += '<li><b>누적관객</b> - ' + movieCount + ' (하루전기준)</li>';
+							str += '<li><b>누적관객</b> - ' + movieCount + ' (하루전기준)</li>';
       						str += '<li><b>영화장르</b> - ' + movieGnr + '</li>';
       						str += '<li><b>상영시간</b> - ' + showTm + '분</li>';
-									str += '<li><b>영화유형</b> - ' + movieType + '</li>';
+							str += '<li><b>영화유형</b> - ' + movieType + '</li>';
       						str += '<li><b>제작년도</b> - ' + movieYear + '년</li>';
-                  str += '<li><b>개봉날짜</b> - ' + movieOpen.substring(0, 4) + '년 ' + movieOpen.substring(4, 6) + '월 ' + movieOpen.substring(6, 8) + '일' + '</li>';
+							str += '<li><b>개봉날짜</b> - ' + movieOpen.substring(0, 4) + '년 ' + movieOpen.substring(4, 6) + '월 ' + movieOpen.substring(6, 8) + '일' + '</li>';
       						str += '<li><b>제작국가</b> - ' + movieNation + '</li>';
       						str += '<li><b>영화감독</b> - ' + director + '</li>';
       						str += '<li><b>출연배우</b> - ' + people + '</li>';
-									str += '<li><b>줄거리</b> - ' + movieStory[0].innerHTML + '</li>';
-									str += '<li class="movie-link"><a href="https://movie.daum.net/search?q='+ movieNm +'#tab=movie" target="_blank"><span>DAUM영화에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
+							str += '<li><b>줄거리</b> - ' + movieStory[0].innerHTML + '</li>';
+							str += '<li class="movie-link"><a href="https://movie.daum.net/search?q='+ movieNm +'#tab=movie" target="_blank"><span>DAUM영화에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
       						$('.movie-show-desc').html(str);
 						};	
 
-          }); //.ajax종료
-    }
-  });
-};
+				}); //.ajax종료
+			}
+		});
+	};
 	/*show() 종료*/
 
 	/*datepicker1과2에 어제날짜가 default*/
-		var maxYesday = new Date();
-		maxYesday.setDate(maxYesday.getDate() - 1);
-		var maxYesdayyear = maxYesday.getFullYear();
-  	var maxYesdaymonth = maxYesday.getMonth() + 1; //월 시작 0부터
-	  if (maxYesdaymonth < 10) {maxYesdaymonth = "0" + maxYesdaymonth};
-		var maxYesdaydate = maxYesday.getDate();
+	var maxYesday = new Date();
+	maxYesday.setDate(maxYesday.getDate() - 1);
+	var maxYesdayyear = maxYesday.getFullYear();
+	var maxYesdaymonth = maxYesday.getMonth() + 1; //월 시작 0부터
+	if (maxYesdaymonth < 10) {maxYesdaymonth = "0" + maxYesdaymonth};
+	var maxYesdaydate = maxYesday.getDate();
   	if (maxYesdaydate < 10) {maxYesdaydate = "0" + maxYesdaydate};
-		var maxYesdaystring = maxYesdayyear + '-' + maxYesdaymonth + '-' + maxYesdaydate;
+	var maxYesdaystring = maxYesdayyear + '-' + maxYesdaymonth + '-' + maxYesdaydate;
 	
-		var maxYesday2 = new Date();
-		maxYesday2.setDate(maxYesday2.getDate() - 7);
-		var maxYesdayyear2 = maxYesday2.getFullYear();
+	var maxYesday2 = new Date();
+	maxYesday2.setDate(maxYesday2.getDate() - 7);
+	var maxYesdayyear2 = maxYesday2.getFullYear();
   	var maxYesdaymonth2 = maxYesday2.getMonth() + 1; //월 시작 0부터
-	  if (maxYesdaymonth2 < 10) {maxYesdaymonth2 = "0" + maxYesdaymonth2};
-		var maxYesdaydate2 = maxYesday2.getDate();
+	if (maxYesdaymonth2 < 10) {maxYesdaymonth2 = "0" + maxYesdaymonth2};
+	var maxYesdaydate2 = maxYesday2.getDate();
   	if (maxYesdaydate2 < 10) {maxYesdaydate2 = "0" + maxYesdaydate2};
-		var maxYesdaystring2 = maxYesdayyear2 + '-' + maxYesdaymonth2 + '-' + maxYesdaydate2;
+	var maxYesdaystring2 = maxYesdayyear2 + '-' + maxYesdaymonth2 + '-' + maxYesdaydate2;
 	
-	
-		$('#datepicker1').val(maxYesdaystring);
-		$('#datepicker2').val(maxYesdaystring2);
+	$('#datepicker1').val(maxYesdaystring);
+	$('#datepicker2').val(maxYesdaystring2);
 //		document.getElementById('datepicker2').valueAsDate = maxYesday;
 
 		/*datepicker1과2에 최소 선택날짜와 최대 선택날짜 설정*/
@@ -366,14 +363,14 @@ window.show = function(movieCd) {
 				$('.m-con1 .rbox').show();
         $.each(item.boxOfficeResult.dailyBoxOfficeList, function (i, content) {
           var rankNum = content.rank;
-					var str = "";
+		  var str = "";
           var rankInten = parseInt(content.rankInten);
           if (rankInten > 0) str += "&uarr;"; //상승
           else if (rankInten < 0) str += "&darr;"; //하락
           else str = str + "&bull;";
           str += rankInten; //상승하락폭
           var movieCd = content.movieCd;
-					var attrMovieCd = "show(" + content.movieCd + ")";
+		  var attrMovieCd = "show(" + content.movieCd + ")";
           $(".rbox1-bottom").next().find(".rbox-a").attr("onclick", attrMovieCd);
           $(".rbox1-bottom").next().find(".rbox-rank-p").html(content.rank);
           $(".rbox1-bottom").next().find(".rbox-title").html(content.movieNm);
@@ -411,7 +408,7 @@ window.show = function(movieCd) {
 			$('.s-text > span').html(sItxt);
 			$('div[class^="m-con"]').hide();
 			$('.m-con4').show();
-			$('.s-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...');
+			$('.s-top').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...<br><br><br>');
 			var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key='+openner+'&itemPerPage=20&movieNm='+sItxt;
 			$.ajax({
       url: url,
@@ -466,16 +463,16 @@ window.show = function(movieCd) {
 
 		/*m-con4 sbox*/
 		$(document).on('click', '.sbox', function(){
-      $( 'html, body' ).animate( { scrollTop : 0 }, 300 );
-      $('.movie-show').show();
-      $(this).find('.sbox-desc').addClass('searchOn');
-      var kakaoQuery =  $(this).find('.sbox-desc .searchMname').text() +  $(this).find('.sbox-desc .searchMyear').text();
-			var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
+		$( 'html, body' ).animate( { scrollTop : 0 }, 300 );
+		$('.movie-show').show();
+		$(this).find('.sbox-desc').addClass('searchOn');
+		var kakaoQuery =  $(this).find('.sbox-desc .searchMname').text() +  $(this).find('.sbox-desc .searchMyear').text();
+		var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
 
 			$.ajax({
 				url: weburl,
-      	dataType: 'html',
-          }).done(function (html1) {
+			dataType: 'html',
+			}).done(function (html1) {
 						var mImg = $("div.movie_info img.thumb_img", html1); //썸네일
 						var mStory = $("div.movie_story a", html1); //줄거리
 						var mData = $(".dl_comp.dl_link", html1); //기타 데이터
@@ -483,33 +480,35 @@ window.show = function(movieCd) {
 						var movieIurl = 'https://www.boxoffice.kro.kr/img/poster130.jpg';
 						var movieStory;
 						var movieCount = "";
-            var mActor = new Array();
-            var movieActor = "";
+						var mActor = new Array();
+						var movieActor = "";
 				
-							if (mImg.length != 0 && mStory.length != 0 && mData.length != 0 ) {
-                $('.result-data-1').html(mImg[0]);
-						  	$('.result-data-2').html(mStory[0].innerHTML);
-						  	$('.result-data-3').html(mData);
-							 goDetail();	
-							} else {
-              console.log('이미지가 없습니다.');
-              var cloneHtml = $('.searchOn').html();
-              $('.movie-show-desc').html("");
-              $('.movie-show-desc').html(cloneHtml);
-              $('.movie-show').show();
-              $('.sbox-desc').removeClass('searchOn');
+				if (mImg.length != 0 && mStory.length != 0 && mData.length != 0 ) {
+					$('.result-data-1').html(mImg[0]);
+				  	$('.result-data-2').html(mStory[0].innerHTML);
+				  	$('.result-data-3').html(mData);
+					goDetail();	
+				} else {
+				console.log('이미지가 없습니다.');
+				movieIurl = $("span.thumb_bf > img", html1).eq(0).attr('data-original-src');	
+				$('.searchOn .movie-poster img').attr('src', movieIurl);
+				var cloneHtml = $('.searchOn').html();
+				$('.movie-show-desc').html("");
+				$('.movie-show-desc').html(cloneHtml);
+				$('.movie-show').show();
+				$('.sbox-desc').removeClass('searchOn');
             	}
 									
-						function goDetail() {
-							movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
+			function goDetail() {
+				movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
 
-              movieStory = $(document).find('.result-data-2').html();
+				movieStory = $(document).find('.result-data-2').html();
 		
-              mActor  = $(document).find('.result-data-3').children('dl:nth-child(2)').find('.f_link');
+				mActor  = $(document).find('.result-data-3').children('dl:nth-child(2)').find('.f_link');
 
 							mCount = $(document).find('.result-data-3').children('dl:nth-child(3)').find('span');
 
-              if (mCount.length > 0) {movieCount = mCount[0].innerText;} else {movieCount = '--'}
+				if (mCount.length > 0) {movieCount = mCount[0].innerText;} else {movieCount = '--'}
 
 							$.each(mActor, function (i, people) {
         				if (i == mActor.length - 1 ) {
@@ -522,10 +521,10 @@ window.show = function(movieCd) {
                 $('.searchOn .searchMcount').text(movieCount);
                 $('.searchOn .searchMactor').text(movieActor);
                 $('.searchOn .searchMstory').html(movieStory);
-              var cloneHtml = $('.searchOn').html();
-              $('.movie-show-desc').html("");
-              $('.movie-show-desc').html(cloneHtml);
-              $('.sbox-desc').removeClass('searchOn');
+				var cloneHtml = $('.searchOn').html();
+				$('.movie-show-desc').html("");
+				$('.movie-show-desc').html(cloneHtml);
+				$('.sbox-desc').removeClass('searchOn');
 						};	
           });
 		});
