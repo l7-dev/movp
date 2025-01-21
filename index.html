@@ -58,7 +58,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/movie.js"></script>
 	<link rel="stylesheet" href="css/font.css">
-	<link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="css/xeicon.min.css">
 	<link rel="stylesheet" href="css/common.css">
 
 	<!-- Google 구조화된 데이터 마크업 도우미에 의해 생성된 JSON-LD 마크업입니다. -->
@@ -121,7 +121,7 @@
 					<li id="menu-open-btn"><i class="xi-bars"></i></li>
 					<li>
 						<div id="search-bar-box">
-							<input id="search-bar-input" type="search" placeholder="영화제목으로 검색">
+							<input id="search-bar-input" type="search" placeholder="영화 제목으로 검색">
 							<button id="search-bar-btn"><i class="xi-search"></i></button>
 						</div>
 					</li>
@@ -203,13 +203,13 @@
 					<div class="rbox">
 						<a class="rbox-a" href="javascript:void(0);" onclick=''>
 							<div class="rbox-rank">
-								<p class="rbox-rank-p">0</p>
+								<p class="rbox-rank-p" title="영화 순위">0</p>
 							</div>
-							<h3 class="rbox-title">영화제목</h3>
-							<p class="rbox-date"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
-							<p class="rbox-num"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
+							<h3 class="rbox-title" title="영화 제목">영화제목</h3>
+							<p class="rbox-date" title="국내 개봉일"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
+							<p class="rbox-num" title="누적 관객수"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
 							<div class="rbox-rank-bg"></div>
-							<h2 class="rbox-rank-gap">&bull;0</h2>
+							<h2 class="rbox-rank-gap" title="영화 순위 증감">&bull;0</h2>
 							<!--<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>-->
 							<div class="rbox-arrow"><img src="img/arrow-1.gif" alt="자세히보기"></div>
 						</a>
@@ -238,13 +238,13 @@
 					<div class="rbox">
 						<a class="rbox-a" href="javascript:void(0);" onclick=''>
 							<div class="rbox-rank">
-								<p class="rbox-rank-p">0</p>
+								<p class="rbox-rank-p" title="영화 순위">0</p>
 							</div>
-							<h3 class="rbox-title">영화제목</h3>
-							<p class="rbox-date"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
-							<p class="rbox-num"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
+							<h3 class="rbox-title" title="영화 제목">영화제목</h3>
+							<p class="rbox-date" title="국내 개봉일"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
+							<p class="rbox-num" title="누적 관객수"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
 							<div class="rbox-rank-bg"></div>
-							<h2 class="rbox-rank-gap">&bull;0</h2>
+							<h2 class="rbox-rank-gap" title="영화 순위 증감">&bull;0</h2>
 							<!--<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>-->
 							<div class="rbox-arrow"><img src="img/arrow-1.gif" alt="자세히보기"></div>
 						</a>
@@ -273,13 +273,13 @@
 					<div class="rbox">
 						<a class="rbox-a" href="javascript:void(0);" onclick=''>
 							<div class="rbox-rank">
-								<p class="rbox-rank-p">0</p>
+								<p class="rbox-rank-p" title="영화 순위">0</p>
 							</div>
-							<h3 class="rbox-title">영화제목</h3>
-							<p class="rbox-date"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
-							<p class="rbox-num"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
+							<h3 class="rbox-title" title="영화 제목">영화제목</h3>
+							<p class="rbox-date" title="국내 개봉일"><i class="xi-calendar-check"></i> <span class="rbox-date-span">국내 개봉일 </span>개봉</p>
+							<p class="rbox-num" title="누적 관객수"><i class="xi-user-plus-o"></i> <span class="rbox-num-span">누적 관객수</span>명</p>
 							<div class="rbox-rank-bg"></div>
-							<h2 class="rbox-rank-gap">&bull;0</h2>
+							<h2 class="rbox-rank-gap" title="영화 순위 증감">&bull;0</h2>
 							<!--<div class="rbox-arrow"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>-->
 							<div class="rbox-arrow"><img src="img/arrow-1.gif" alt="자세히보기"></div>
 						</a>
@@ -311,9 +311,9 @@
 							<p class="sbox-bull-p"><i class="xi-play"></i></p>
 							<img src="img/logo_60.png" alt="무비피플로고">
 						</div>
-						<h3 class="sbox-title">영화제목</h3>
-						<p class="sbox-date"><i class="xi-calendar-check"></i> <span class="sbox-date-span">국내 개봉일 </span>개봉</p>
-						<p class="sbox-pd"><i class="xi-theater"></i> <span class="sbox-pd-span">감독명</span> 감독</p>
+						<h3 class="sbox-title" title="영화 제목">영화제목</h3>
+						<p class="sbox-date" title="국내 개봉일"><i class="xi-calendar-check"></i> <span class="sbox-date-span">국내 개봉일 </span>개봉</p>
+						<p class="sbox-pd" title="감독 이름"><i class="xi-theater"></i> <span class="sbox-pd-span">감독명</span> 감독</p>
 						<div class="sbox-list-bg"></div>
 						<p class="sbox-show-click">상세보기</p>
 						<!--<div class="rbo기"><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span><span>&rsaquo;&rsaquo;</span></div>-->
