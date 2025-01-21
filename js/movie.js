@@ -1,6 +1,4 @@
 $(function () {
-	
-
 	/*3자리 콤마*/
 	function comma(numb) {
 		var money = numb.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -196,6 +194,7 @@ $(function () {
 	var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key='+openner+'&movieCd=';
 	url += movieCd;
 	$('.movie-show-desc').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...<br><br><br>');
+
 	$.ajax({
     url: url,
     dataType: 'json',
@@ -215,37 +214,57 @@ $(function () {
 			} else {var director = '--'}
 		var people = "";
 		var length = movieInfo.actors.length;
-		var kakaoQuery = movieNm + movieYear;
+		var kakaoQuery = movieNm + " " + movieYear;
 		var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
+		var mImg = "";
 
 			$.ajax({
-				url: weburl,
-				dataType: 'html',
+				type: "GET",
+				url: "https://dapi.kakao.com/v2/search/image",
+				headers: {
+					'Authorization': 'KakaoAK 7c319281f0acf48db337ce57a47e6113' // 'KakaoAK 0000000000000000000000000000000000'
+				},
+				data: {
+					'query': kakaoQuery,
+					'sort': 'accuracy', //accuracy(정확도순) 또는 recency(최신순)
+					'page': 1, //결과 페이지 번호, 1~50 사이의 값, 기본 값 1
+					'size': 1 //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
+				},
+				success: function (jdata) {
+					$(jdata.documents).each(function (index) {
+						//mImg = this.thumbnail_url ? this.thumbnail_url.split('?')[0] : '../img/poster130.jpg';
+						//console.log(mImg);
+					});
+				},
+				error: function (xhr, textStatus) {
+					console.log(xhr.responseText);
+					console.log("에러");
+					return;
+				}
 			}).done(function (html1) {
-						var mImg = $("div.movie_info img.thumb_img", html1); //find:html1 썸네일
-						var mStory = $("div.movie_story a", html1); //줄거리
-						var mData = $(".dl_comp.dl_link", html1); //기타 데이터
-						var mCount = new Array();
-						//var movieIurl = 'https://www.boxoffice.kro.kr/img/poster130.jpg';
-						var movieStory = new Array();
-						var movieCount = "";
-				
-            if (mImg.length != 0 && mStory.length != 0 && mData.length != 0 ) {
-				$('.result-data-1').html(mImg[0]);
-				$('.result-data-2').html(mStory[0].innerHTML);
-				$('.result-data-3').html(mData);
-				goDetail();	
-				} else {
-				console.log('이미지가 없습니다.');
-							$.each(movieInfo.actors, function (i, content) {
+					console.log(html1);
+					$(html1.documents).each(function (index) {
+						mImg = this.thumbnail_url ? this.thumbnail_url.split('?')[0] : '../img/poster130.jpg';
+						//console.log("도큐먼츠", this.image_url);
+						//console.log("이미지값", mImg);
+					});
+					var mCount = new Array();
+					var movieIurl = "../img/poster130.jpg";
+					var movieStory = new Array();
+					var movieCount = "";
+
+						$.each(movieInfo.actors, function (i, content) {
         				if (i == length - 1) {
 										people += content.peopleNm;
 									} else {
 										people += content.peopleNm + ", ";
 									}
       					});
-							var movieIurl = $("span.thumb_bf > img", html1).eq(0).attr('data-original-src');
-							str += '<div class="movie-poster"><img src="' + movieIurl + '"></div>';
+						  console.log("이름",kakaoQuery);
+							//var movieIurl = $("span.thumb_bf > img", html1).eq(0).attr('data-original-src');
+							str += '<div class="movie-poster"><img src="' + mImg + '"></div>';
+							console.log("movieIurl",movieIurl);
+							console.log("str",str);
       						str += '<ul><li>' + movieNm + '</li>';
       						str += '<li>' + movieNmEn + '</li>';
       						str += '<li><b>영화장르</b> - ' + movieGnr + '</li>';
@@ -256,10 +275,9 @@ $(function () {
       						str += '<li><b>제작국가</b> - ' + movieNation + '</li>';
       						str += '<li><b>영화감독</b> - ' + director + '</li>';
       						str += '<li><b>출연배우</b> - ' + people + '</li>';
-							str += '<li class="movie-link"><a href="https://movie.daum.net/search?q='+ movieNm +'#tab=movie" target="_blank"><span>DAUM영화에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
+							str += '<li class="movie-link"><a href="https://www.kmdb.or.kr/db/detailSearch/artSearch?query='+ movieNm +'#tab=movie" target="_blank"><span>KMDB에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
       						$('.movie-show-desc').html(str);	
-            	}
-									
+				
 				function goDetail() {
 					movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
 
@@ -288,8 +306,8 @@ $(function () {
       						str += '<li><b>제작국가</b> - ' + movieNation + '</li>';
       						str += '<li><b>영화감독</b> - ' + director + '</li>';
       						str += '<li><b>출연배우</b> - ' + people + '</li>';
-							str += '<li><b>줄거리</b> - ' + movieStory[0].innerHTML + '</li>';
-							str += '<li class="movie-link"><a href="https://movie.daum.net/search?q='+ movieNm +'#tab=movie" target="_blank"><span>DAUM영화에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
+							// str += '<li><b>줄거리</b> - ' + movieStory[0].innerHTML + '</li>';
+							str += '<li class="movie-link"><a href="https://www.kmdb.or.kr/db/detailSearch/artSearch?query='+ movieNm +'#tab=movie" target="_blank"><span>KMDB에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
       						$('.movie-show-desc').html(str);
 						};	
 
@@ -450,7 +468,7 @@ $(function () {
       						str += '<li><b>제작상태</b> - ' + movieStat + '</li>';
                   str += '<li><b>출연배우</b> - <span class="searchMactor">--</span> </li>';
                   str += '<li><b>줄거리</b> - <span class="searchMstory">--</span> </li>';
-									str += '<li class="movie-link"><a href="https://movie.daum.net/search?q='+ movieNm +'#tab=movie" target="_blank"><span>DAUM영화에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
+									str += '<li class="movie-link"><a href="https://www.kmdb.or.kr/db/detailSearch/artSearch?query='+ movieNm +'#tab=movie" target="_blank"><span>KMDB에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
       						$('.s-bottom').next().find('.sbox-desc').html(str);
 									if (i < mLenth-1) {
 										var $serClone = $(".s-bottom").next().clone();
