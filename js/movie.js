@@ -194,7 +194,6 @@ $(function () {
 	var url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key='+openner+'&movieCd=';
 	url += movieCd;
 	$('.movie-show-desc').html('<i class="xi-spinner-1 xi-spin"></i> 검색중...<br><br><br>');
-
 	$.ajax({
     url: url,
     dataType: 'json',
@@ -215,8 +214,8 @@ $(function () {
 		var people = "";
 		var length = movieInfo.actors.length;
 		var kakaoQuery = movieNm + " " + movieYear;
-		var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
-		var mImg = "";
+		//var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
+		var mImg = "../img/poster130.jpg";
 
 			$.ajax({
 				type: "GET",
@@ -242,15 +241,15 @@ $(function () {
 					return;
 				}
 			}).done(function (html1) {
-					console.log(html1);
+					//console.log(html1);
 					$(html1.documents).each(function (index) {
 						mImg = this.thumbnail_url ? this.thumbnail_url.split('?')[0] : '../img/poster130.jpg';
 						//console.log("도큐먼츠", this.image_url);
 						//console.log("이미지값", mImg);
 					});
-					var mCount = new Array();
+					//var mCount = new Array();
 					var movieIurl = "../img/poster130.jpg";
-					var movieStory = new Array();
+					//var movieStory = new Array();
 					var movieCount = "";
 
 						$.each(movieInfo.actors, function (i, content) {
@@ -260,13 +259,27 @@ $(function () {
 										people += content.peopleNm + ", ";
 									}
       					});
-						  console.log("이름",kakaoQuery);
+						  //console.log("이름",kakaoQuery);
 							//var movieIurl = $("span.thumb_bf > img", html1).eq(0).attr('data-original-src');
+							//mCount = $(document).find('.result-data-3').children('dl:nth-child(3)').find('span');
+							//movieCount = mCount[0].innerText;
+							//console.log("관객수", mCount);
+
+							//if (mCount.length > 0) {movieCount = mCount[0].innerText;} else {movieCount = '--'}
+									
+								$.each(movieInfo.actors, function (i, content) {
+									if (i == length - 1) {
+												people += content.peopleNm;
+											} else {
+												people += content.peopleNm + ", ";
+											}
+								  });
+
 							str += '<div class="movie-poster"><img src="' + mImg + '"></div>';
-							console.log("movieIurl",movieIurl);
-							console.log("str",str);
+							//console.log("movieIurl",movieIurl);
       						str += '<ul><li>' + movieNm + '</li>';
       						str += '<li>' + movieNmEn + '</li>';
+							//str += '<li><b>누적관객</b> - ' + movieCount + ' (하루전기준)</li>';
       						str += '<li><b>영화장르</b> - ' + movieGnr + '</li>';
       						str += '<li><b>상영시간</b> - ' + showTm + '분</li>';
 							str += '<li><b>영화유형</b> - ' + movieType + '</li>';
@@ -277,11 +290,11 @@ $(function () {
       						str += '<li><b>출연배우</b> - ' + people + '</li>';
 							str += '<li class="movie-link"><a href="https://www.kmdb.or.kr/db/detailSearch/artSearch?query='+ movieNm +'#tab=movie" target="_blank"><span>KMDB에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
       						$('.movie-show-desc').html(str);	
-				
-				function goDetail() {
-					movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
 
-					movieStory = $(document).find('.result-data-2');
+
+					function goDetail() {
+					//movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
+					//movieStory = $(document).find('.result-data-2');
 													
 					mCount = $(document).find('.result-data-3').children('dl:nth-child(3)').find('span');
 
@@ -438,8 +451,8 @@ $(function () {
 				var mLenth = item.movieListResult.movieList.length;
         $.each(item.movieListResult.movieList, function (i, content) {
 					var yyyy = content.openDt.substr(0,4),
-							mm = content.openDt.substr(4,2),
-							dd = content.openDt.substr(6,2);
+						mm = content.openDt.substr(4,2),
+						dd = content.openDt.substr(6,2);
 					var pdNm = "--";
 					if (content.directors.length > 0) {pdNm = content.directors[0].peopleNm;}
           var movieNm = content.movieNm;
@@ -450,30 +463,31 @@ $(function () {
 					var movieYear = content.prdtYear;
 					var movieNation = content.repNationNm;
 					var movieStat = content.prdtStatNm;
-					var tUrl = "https://www.boxoffice.kro.kr/img/poster130.jpg";
+					var tUrl = "../img/poster130.jpg";
+
           $(".s-bottom").next().find(".sbox-title").html(movieNm);
           $(".s-bottom").next().find(".sbox-date-span").html(yyyy+'-'+mm+'-'+dd);
           $(".s-bottom").next().find(".sbox-pd-span").html(pdNm);
 										
-									str += '<div class="movie-poster"><img src="' + tUrl + '"></div>';
+							str += '<div class="movie-poster"><img src="' + tUrl + '"></div>';
       						str += '<ul><li class="searchMname">' + movieNm + '</li>';
       						str += '<li>' + movieNmEn + '</li>';
-                  str += '<li><b>누적관객</b> - <span class="searchMcount">--</span> (하루전기준)</li>';
+                  			//str += '<li><b>누적관객</b> - <span class="searchMcount">--</span> (하루전기준)</li>';
 					      	str += '<li><b>영화감독</b> - ' + pdNm + '</li>';
 					      	str += '<li><b>제작년도</b> - <span  class="searchMyear">' + movieYear + '</span>년</li>';
       						str += '<li><b>개봉날짜</b> - ' + yyyy+'년 '+mm+'월 '+dd + '일</li>';
       						str += '<li><b>제작국가</b> - ' + movieNation + '</li>';
       						str += '<li><b>영화장르</b> - ' + movieGnr + '</li>';
-									str += '<li><b>영화유형</b> - ' + movieType + '</li>';
+							str += '<li><b>영화유형</b> - ' + movieType + '</li>';
       						str += '<li><b>제작상태</b> - ' + movieStat + '</li>';
-                  str += '<li><b>출연배우</b> - <span class="searchMactor">--</span> </li>';
-                  str += '<li><b>줄거리</b> - <span class="searchMstory">--</span> </li>';
-									str += '<li class="movie-link"><a href="https://www.kmdb.or.kr/db/detailSearch/artSearch?query='+ movieNm +'#tab=movie" target="_blank"><span>KMDB에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
+                 			//str += '<li><b>출연배우</b> - <span class="searchMactor">--</span> </li>';
+                 			//str += '<li><b>줄거리</b> - <span class="searchMstory">--</span> </li>';
+							str += '<li class="movie-link"><a href="https://www.kmdb.or.kr/db/detailSearch/artSearch?query='+ movieNm +'#tab=movie" target="_blank"><span>KMDB에서 상세검색 <i class="xi-touch"></i></span></a></li></ul>';
       						$('.s-bottom').next().find('.sbox-desc').html(str);
-									if (i < mLenth-1) {
+								if (i < mLenth-1) {
 										var $serClone = $(".s-bottom").next().clone();
 										$(".s-top").append($serClone);
-									}
+								}
         });
       }
     });
@@ -484,61 +498,76 @@ $(function () {
 		$( 'html, body' ).animate( { scrollTop : 0 }, 300 );
 		$('.movie-show').show();
 		$(this).find('.sbox-desc').addClass('searchOn');
-		var kakaoQuery =  $(this).find('.sbox-desc .searchMname').text() +  $(this).find('.sbox-desc .searchMyear').text();
-		var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
+		var kakaoQuery =  $(this).find('.sbox-desc .searchMname').text() + " " + $(this).find('.sbox-desc .searchMyear').text();
+		//console.log(kakaoQuery);
+		//var weburl = 'https://linkman.herokuapp.com/https://m.search.daum.net/search?w=tot&nil_mtopsearch=btn&DA=YZR&q=' + kakaoQuery;
+		var mImg = "../img/poster130.jpg";
 
-			$.ajax({
-				url: weburl,
-			dataType: 'html',
-			}).done(function (html1) {
-						var mImg = $("div.movie_info img.thumb_img", html1); //썸네일
-						var mStory = $("div.movie_story a", html1); //줄거리
-						var mData = $(".dl_comp.dl_link", html1); //기타 데이터
+		$.ajax({
+			type: "GET",
+			url: "https://dapi.kakao.com/v2/search/image",
+			headers: {
+				'Authorization': 'KakaoAK 7c319281f0acf48db337ce57a47e6113' // 'KakaoAK 0000000000000000000000000000000000'
+			},
+			data: {
+				'query': kakaoQuery,
+				'sort': 'accuracy', //accuracy(정확도순) 또는 recency(최신순)
+				'page': 1, //결과 페이지 번호, 1~50 사이의 값, 기본 값 1
+				'size': 1 //한 페이지에 보여질 문서 수, 1~80 사이의 값, 기본 값 80
+			},
+			success: function (jdata) {
+				$(jdata.documents).each(function (index) {
+					//mImg = this.thumbnail_url ? this.thumbnail_url.split('?')[0] : '../img/poster130.jpg';
+					//console.log(mImg);
+				});
+			},
+			error: function (xhr, textStatus) {
+				console.log(xhr.responseText);
+				console.log("에러");
+				return;
+			}
+		}).done(function (html1) {
+						$(html1.documents).each(function (index) {
+							mImg = this.thumbnail_url ? this.thumbnail_url.split('?')[0] : '../img/poster130.jpg';
+							//console.log("도큐먼츠", this.image_url);
+							//console.log("이미지값", mImg);
+						});
 						var mCount = new Array();
-						var movieIurl = 'https://www.boxoffice.kro.kr/img/poster130.jpg';
+						var movieIurl = '../img/poster130.jpg';
 						var movieStory;
 						var movieCount = "";
 						var mActor = new Array();
 						var movieActor = "";
-				
-				if (mImg.length != 0 && mStory.length != 0 && mData.length != 0 ) {
-					$('.result-data-1').html(mImg[0]);
-				  	$('.result-data-2').html(mStory[0].innerHTML);
-				  	$('.result-data-3').html(mData);
-					goDetail();	
-				} else {
-				console.log('이미지가 없습니다.');
-				movieIurl = $("span.thumb_bf > img", html1).eq(0).attr('data-original-src');	
-				$('.searchOn .movie-poster img').attr('src', movieIurl);
-				var cloneHtml = $('.searchOn').html();
-				$('.movie-show-desc').html("");
-				$('.movie-show-desc').html(cloneHtml);
-				$('.movie-show').show();
-				$('.sbox-desc').removeClass('searchOn');
-            	}
+
+						$('.searchOn .movie-poster img').attr('src', mImg);
+						var cloneHtml = $('.searchOn').html();
+						$('.movie-show-desc').html("");
+						$('.movie-show-desc').html(cloneHtml);
+						$('.movie-show').show();
+						$('.sbox-desc').removeClass('searchOn');
+						//goDetail();
+
 									
 			function goDetail() {
-				movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
-
-				movieStory = $(document).find('.result-data-2').html();
+				//movieIurl = $(document).find('.result-data-1').find('img').attr('data-original-src');
+				//movieStory = $(document).find('.result-data-2').html();
 		
 				mActor  = $(document).find('.result-data-3').children('dl:nth-child(2)').find('.f_link');
-
-							mCount = $(document).find('.result-data-3').children('dl:nth-child(3)').find('span');
+				mCount = $(document).find('.result-data-3').children('dl:nth-child(3)').find('span');
 
 				if (mCount.length > 0) {movieCount = mCount[0].innerText;} else {movieCount = '--'}
 
-							$.each(mActor, function (i, people) {
+					$.each(mActor, function (i, people) {
         				if (i == mActor.length - 1 ) {
-                    movieActor += people.innerText;
-									} else {
-										movieActor += people.innerText + ", ";
-									}
+                    	movieActor += people.innerText;
+							} else {
+								movieActor += people.innerText + ", ";
+							}
       					});
-                $('.searchOn .movie-poster img').attr('src', movieIurl);
+                //$('.searchOn .movie-poster img').attr('src', movieIurl);
                 $('.searchOn .searchMcount').text(movieCount);
                 $('.searchOn .searchMactor').text(movieActor);
-                $('.searchOn .searchMstory').html(movieStory);
+                //$('.searchOn .searchMstory').html(movieStory);
 				var cloneHtml = $('.searchOn').html();
 				$('.movie-show-desc').html("");
 				$('.movie-show-desc').html(cloneHtml);
